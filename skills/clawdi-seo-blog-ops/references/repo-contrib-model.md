@@ -22,3 +22,7 @@ Contributors should not need direct write access to `Clawdi-AI/clawdi`.
 - Ready for promotion: `docs/blog/_ready-for-main/`
 - Images: `docs/blog/imgs/<slug>/`
 - Promotion log: `docs/blog/_published-index/manifest.md`
+
+
+## Commit guardrail script
+Use `skills/clawdi-seo-blog-ops/scripts/commit_blog.sh` to enforce branch naming, file checks, and standardized commit messages.

@@ -32,3 +32,20 @@ status: incoming | ready-for-main
 source_repo: Marvin-Cypher/clawdi-marketing-skillkit
 ---
 ```
+
+
+## One-command correct commit
+Use the guardrail script:
+
+```bash
+skills/clawdi-seo-blog-ops/scripts/commit_blog.sh <slug> --stage incoming
+# or
+skills/clawdi-seo-blog-ops/scripts/commit_blog.sh <slug> --stage ready
+```
+
+Checks enforced:
+- post file exists in expected stage directory
+- cover exists in `docs/blog/imgs/<slug>/cover-google.png`
+- required frontmatter fields exist
+- branch name starts with `feat/blog-`
+- standardized commit message format

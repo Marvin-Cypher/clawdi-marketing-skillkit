@@ -24,3 +24,14 @@ Reusable OpenClaw skill package for Clawdi SEO/blog operations.
 ## Notes
 - This repo includes process knowledge distilled from real Clawdi blog production.
 - Keep secrets in local `.env` files, never in git.
+
+
+## Quick bootstrap for teammates
+
+To make external repos/skills discoverable on a fresh machine:
+
+```bash
+bash bootstrap/install-resources.sh
+```
+
+This will clone/update required repos and install the required skills into `~/.openclaw/skills`.

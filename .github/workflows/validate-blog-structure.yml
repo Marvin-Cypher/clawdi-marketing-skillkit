@@ -1,0 +1,18 @@
+name: Validate blog structure
+on:
+  pull_request:
+    paths:
+      - 'docs/blog/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check markdown in incoming has frontmatter
+        run: |
+          set -e
+          files=$(find docs/blog/_incoming -maxdepth 1 -name '*.md' ! -name 'example-post-template.md' || true)
+          for f in $files; do
+            head -n 1 "$f" | grep -q '^---$' || (echo "Missing frontmatter in $f" && exit 1)
+          done

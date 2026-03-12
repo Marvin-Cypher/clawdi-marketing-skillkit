@@ -15,3 +15,10 @@ Contributors should not need direct write access to `Clawdi-AI/clawdi`.
 ## Commit strategy
 - one commit per post or tightly scoped batch
 - clear message: `docs(blog): add/update <slug> + cover`
+
+
+## Content collection location in this repo
+- Draft intake: `docs/blog/_incoming/`
+- Ready for promotion: `docs/blog/_ready-for-main/`
+- Images: `docs/blog/imgs/<slug>/`
+- Promotion log: `docs/blog/_published-index/manifest.md`

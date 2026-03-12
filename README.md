@@ -39,3 +39,8 @@ This will clone/update required repos and install the required skills into `~/.o
 
 > Team workflow in this repo does **not require** access to `Clawdi-AI/clawdi`.
 > Teams contribute here; maintainers promote approved content to main.
+
+
+## Additional skill: cross-repo blog promotion
+
+This repo includes `skills/clawdi-blog-promoter` for comparing incoming blog drafts vs target Clawdi blog path and promoting only new slugs to a target branch.

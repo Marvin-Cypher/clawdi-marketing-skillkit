@@ -16,7 +16,12 @@ clone_or_pull () {
   fi
 }
 
-clone_or_pull "https://github.com/Clawdi-AI/clawdi.git" "$BASE_DIR/clawdi"
+# Optional reference repo (may be private / no auth for teammates)
+if [[ "${INSTALL_CLAWDI_REF:-0}" == "1" ]]; then
+  clone_or_pull "https://github.com/Clawdi-AI/clawdi.git" "$BASE_DIR/clawdi" || echo "Note: could not clone Clawdi-AI/clawdi (auth or access). Continuing."
+else
+  echo "Skipping Clawdi-AI/clawdi clone (set INSTALL_CLAWDI_REF=1 to enable)."
+fi
 clone_or_pull "https://github.com/coreyhaines31/marketingskills.git" "$BASE_DIR/marketingskills"
 clone_or_pull "https://github.com/JimLiu/baoyu-skills.git" "$BASE_DIR/baoyu-skills"
 

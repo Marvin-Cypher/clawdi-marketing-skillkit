@@ -35,3 +35,7 @@ bash bootstrap/install-resources.sh
 ```
 
 This will clone/update required repos and install the required skills into `~/.openclaw/skills`.
+
+
+> Team workflow in this repo does **not require** access to `Clawdi-AI/clawdi`.
+> Teams contribute here; maintainers promote approved content to main.

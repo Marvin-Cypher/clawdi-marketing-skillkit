@@ -1,0 +1,60 @@
+{
+  "jobs": 2,
+  "tasks": [
+    {
+      "id": "openclaw-explained-what-it-is-and-how-it-powers-ai-assistants-cover",
+      "promptFiles": [
+        "../imgs/openclaw-explained-what-it-is-and-how-it-powers-ai-assistants/prompts/cover-google-strict.md"
+      ],
+      "image": "../imgs/openclaw-explained-what-it-is-and-how-it-powers-ai-assistants/cover-google.png",
+      "provider": "google",
+      "model": "gemini-3.1-flash-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "ai-agents-vs-chatbots-whats-the-difference-cover",
+      "promptFiles": [
+        "../imgs/ai-agents-vs-chatbots-whats-the-difference/prompts/cover-google-strict.md"
+      ],
+      "image": "../imgs/ai-agents-vs-chatbots-whats-the-difference/cover-google.png",
+      "provider": "google",
+      "model": "gemini-3.1-flash-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "what-is-an-ai-chief-of-staff-cover",
+      "promptFiles": [
+        "../imgs/what-is-an-ai-chief-of-staff/prompts/cover-google-strict.md"
+      ],
+      "image": "../imgs/what-is-an-ai-chief-of-staff/cover-google.png",
+      "provider": "google",
+      "model": "gemini-3.1-flash-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "how-to-automate-email-calendar-and-reports-with-ai-cover",
+      "promptFiles": [
+        "../imgs/how-to-automate-email-calendar-and-reports-with-ai/prompts/cover-google-strict.md"
+      ],
+      "image": "../imgs/how-to-automate-email-calendar-and-reports-with-ai/cover-google.png",
+      "provider": "google",
+      "model": "gemini-3.1-flash-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    },
+    {
+      "id": "workflows-you-can-automate-with-an-ai-chief-of-staff-cover",
+      "promptFiles": [
+        "../imgs/workflows-you-can-automate-with-an-ai-chief-of-staff/prompts/cover-google-strict.md"
+      ],
+      "image": "../imgs/workflows-you-can-automate-with-an-ai-chief-of-staff/cover-google.png",
+      "provider": "google",
+      "model": "gemini-3.1-flash-image-preview",
+      "ar": "16:9",
+      "quality": "2k"
+    }
+  ]
+}

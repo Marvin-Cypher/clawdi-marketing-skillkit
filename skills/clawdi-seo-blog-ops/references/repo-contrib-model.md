@@ -1,28 +1,28 @@
-# Repo Contribution Model (Team Without Main Access)
+# Contribution Model
 
-## Principle
-Contributors should not need direct write access to `Clawdi-AI/clawdi`.
+## Publishing
 
-## Recommended pattern
-1. Team clones writable repo (e.g., Marvin-owned marketing repo).
-2. Team commits blog/covers there.
-3. Open PR or cherry-pick into main repo by authorized maintainer.
+Blog content is published directly to the **Clawdi Payload CMS** via REST API.
 
-## Branch strategy
-- `feat/blog-<slug>`
-- `feat/covers-batch-<date>`
+Contributors do not need access to `Clawdi-AI/clawdi` or any Git repo to publish blog posts. The CMS is the source of truth for published content.
 
-## Commit strategy
-- one commit per post or tightly scoped batch
-- clear message: `docs(blog): add/update <slug> + cover`
+See `cms-publishing.md` for the full API guide.
 
+## This repo's role
 
-## Content collection location in this repo
+This repo (`clawdi-marketing-skillkit`) stores:
+- Reusable skills and workflow references for blog production
+- Cover system design constraints
+- Scripts for scaffolding and batch operations
+- Drafts in progress (optional, for review before CMS publish)
+
+## Draft staging (optional)
+
+For teams that want draft review before publishing to CMS:
 - Draft intake: `docs/blog/_incoming/`
-- Ready for promotion: `docs/blog/_ready-for-main/`
+- Ready for CMS publish: `docs/blog/_ready-for-cms/`
 - Images: `docs/blog/imgs/<slug>/`
-- Promotion log: `docs/blog/_published-index/manifest.md`
 
-
-## Commit guardrail script
-Use `skills/clawdi-seo-blog-ops/scripts/commit_blog.sh` to enforce branch naming, file checks, and standardized commit messages.
+## Branch strategy (for skill/reference updates)
+- `feat/blog-<slug>` — draft content for review
+- `feat/workflow-<topic>` — skill or reference updates

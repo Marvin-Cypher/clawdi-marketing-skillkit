@@ -65,7 +65,12 @@ GET https://www.clawdi.ai/cms-api/posts?where[slug][equals]=my-slug&limit=1
 - `POST /cms-api/posts` if not found
 - `PATCH /cms-api/posts/:id` if found
 
-### 3. Payload shape
+When updating an existing post, prefer **PATCHing only the fields you are changing** to avoid accidentally resetting other fields. Example:
+
+- First PATCH: `{ "content": { ...Lexical JSON... } }`.
+- Later PATCH: `{ "cover": <mediaId>, "meta": { "image": <mediaId> } }`.
+
+### 3. Payload shape (new post)
 ```json
 {
   "title": "My Article",
@@ -88,6 +93,35 @@ GET https://www.clawdi.ai/cms-api/posts?where[slug][equals]=my-slug&limit=1
 
 Payload uses Lexical as the rich text editor. Content must be converted from markdown to Lexical JSON before upload.
 
+### Minimal markdown → Lexical mapping
+
+For simple Clawdi blog posts (no tables/code blocks), a safe mapping is:
+
+- `#`, `##`, `###` → `heading` nodes with `tag: "h1" | "h2" | "h3"`.
+- `- ...` bullet items → a `list` node with:
+  - `type: "list"`
+  - `listType: "bullet"`
+  - `tag: "ul"`
+  - `children`: `listitem` nodes, each wrapping a single `text` child.
+- `1. ...` numbered items → a `list` node with:
+  - `type: "list"`
+  - `listType: "number"`
+  - `tag: "ol"`
+  - `children`: `listitem` nodes.
+- `---` → `horizontalrule` node.
+- Everything else → `paragraph` nodes.
+
+You can build `content.root.children` programmatically from the markdown body, then PATCH only the `content` field on an existing `posts/:id`.
+
+### Lists and required `tag`
+
+Payload's Lexical RichText renderer uses the `tag` field on list nodes to decide which HTML element to render (`<ul>` vs `<ol>`). List nodes **must** include this field:
+
+- Unordered (bullet) lists → `listType: "bullet"`, `tag: "ul"`.
+- Ordered (numbered) lists → `listType: "number"`, `tag: "ol"`.
+
+If `tag` is missing, the frontend may attempt to render an undefined element and crash (React error #130). When debugging broken posts, inspect the Lexical JSON and ensure list nodes have both `listType` and `tag`.
+
 ### Supported conversions
 - Headings, paragraphs, lists, blockquotes, horizontal rules, links
 - Inline images → upload to `media` → Lexical `upload` nodes
@@ -108,6 +142,7 @@ After publishing, verify:
 - Inline images are Lexical `upload` nodes (not markdown text)
 - Tables are Lexical `table` nodes (not pipe-delimited text)
 - Code blocks are proper code/block nodes (not raw triple-backtick text)
+- List nodes include both `listType` and `tag` (`"ul"`/`"ol"`) so the frontend renderer can safely render `<ul>`/`<ol>` elements.
 
 ## Blog ordering
 
